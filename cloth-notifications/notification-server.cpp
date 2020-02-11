@@ -175,6 +175,12 @@ namespace cloth::notifications {
     title.get_style_context()->add_class("title");
     body.get_style_context()->add_class("body");
 
+    // Set alignment (maybe we should export it as a CSS property)
+    title.set_justify(Gtk::Justification::JUSTIFY_LEFT);
+    body.set_justify(Gtk::Justification::JUSTIFY_LEFT);
+    title.set_halign(Gtk::Align::ALIGN_START);
+    body.set_halign(Gtk::Align::ALIGN_START);
+    
     body.set_text(body_str);
     body.set_line_wrap(true);
     body.set_max_width_chars(80);
@@ -197,8 +203,8 @@ namespace cloth::notifications {
       actions_box.pack_start(button);
     }
     auto& box2 = *Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_VERTICAL));
-    box2.pack_start(title);
-    if (!body_str.empty()) box2.pack_start(body);
+    box2.pack_start(title, false, false);
+    if (!body_str.empty()) box2.pack_start(body, false, false);
     if (!actions.empty()) box2.pack_start(actions_box);
 
     auto& box1 = *Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
