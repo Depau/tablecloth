@@ -194,6 +194,7 @@ namespace cloth::notifications {
     body.set_halign(Gtk::Align::ALIGN_START);
     
     body.set_markup(body_str);
+    
     body.set_line_wrap(true);
     body.set_max_width_chars(80);
     auto& actions_box = *Gtk::manage(new Gtk::Box(Gtk::ORIENTATION_HORIZONTAL));
